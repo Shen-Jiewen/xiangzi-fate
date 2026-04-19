@@ -165,10 +165,12 @@ export const ARCHETYPES = [
   },
 ];
 
-// 10 题问卷
+// 20 题问卷
 // 每个选项的 weight: {drive, grit, calc, kind}，用于加到用户向量上
+// 文案走老北平包装 + 当代生存焦虑：加班、催婚、房租涨、跳槽、身体亚健康、
+// 家人病、同辈攀比、新技术焦虑、深夜刷手机、朋友拉入伙……
 export const QUESTIONS = [
-  // Q1 - 延续起点情境
+  // Q1 - 延续起点情境：本钱见底
   {
     narration: "头一个月，日子比你想的难。手里那点本钱见底了，眼下只剩四条路。",
     options: [
@@ -178,7 +180,7 @@ export const QUESTIONS = [
       { text: "算了，混一天是一天",              w: { drive: -1.0, grit: -1.0, calc: 0.0, kind: 0.0 } },
     ],
   },
-  // Q2 - 情境化冲突
+  // Q2 - 情境化冲突：陌生人打听
   {
     narration: "拉了一天车，回到住的地方，邻居说你不在的时候来了个陌生人打听你。",
     options: [
@@ -188,7 +190,17 @@ export const QUESTIONS = [
       { text: "吓得一宿没睡，想着要不要跑路",       w: { drive: -0.5, grit: -1.5, calc: 0.5, kind: 0.5 } },
     ],
   },
-  // Q3 - 金钱与信任
+  // Q3 - 加班夜戏（996 / 愿不愿为两毛加班）
+  {
+    narration: "东家说今晚加一场夜戏，跑完多给两毛。你这一天已经跑穿了，腿肚子都在抖。",
+    options: [
+      { text: "干！两毛也是钱，腿抖着也上",         w: { drive: 2.0, grit: 1.5, calc: 0.0, kind: -0.5 } },
+      { text: "先吃口饭歇会儿，撑得住就撑",        w: { drive: 0.5, grit: 1.0, calc: 1.5, kind: 0.5 } },
+      { text: "这两毛我不挣，明儿一早准点出车",     w: { drive: -0.5, grit: 0.5, calc: 1.0, kind: 1.0 } },
+      { text: "推了，今晚陪院里兄弟喝两口",        w: { drive: -1.0, grit: -0.5, calc: -0.5, kind: 1.5 } },
+    ],
+  },
+  // Q4 - 金钱与信任：高妈借钱
   {
     narration: "高妈开口借你五块大洋，说下个月还。五块不多，但这个月你正缺。",
     options: [
@@ -198,7 +210,17 @@ export const QUESTIONS = [
       { text: "找个理由推了，下次她再开口就装没听见", w: { drive: 0.0, grit: 0.0, calc: 1.0, kind: -1.5 } },
     ],
   },
-  // Q4 - 抗压
+  // Q5 - 跳槽：天桥那边的车厂挖你
+  {
+    narration: "天桥那边的车厂托人捎话，过去拉车份子低一成——可人生地不熟，从头再来。",
+    options: [
+      { text: "去！哪儿多赚一毛去哪儿",           w: { drive: 2.0, grit: 1.0, calc: 1.0, kind: -0.5 } },
+      { text: "先过去喝顿酒，摸摸门道再说",        w: { drive: 0.5, grit: 0.5, calc: 2.0, kind: 0.5 } },
+      { text: "熟门熟路的好，别折腾",             w: { drive: -0.5, grit: 1.5, calc: 1.0, kind: 1.0 } },
+      { text: "跟四爷嘴上提一提，看他降不降",      w: { drive: 1.0, grit: 0.5, calc: 2.0, kind: -0.5 } },
+    ],
+  },
+  // Q6 - 抗压：雨天半价
   {
     narration: "雨下了一整天，你浑身湿透，车把人送到地方，人却只给了半价。",
     options: [
@@ -208,7 +230,17 @@ export const QUESTIONS = [
       { text: "笑笑，「爷们儿大雨天不跟您计较」", w: { drive: -1.0, grit: 1.5, calc: -0.5, kind: 1.5 } },
     ],
   },
-  // Q5 - 工作态度
+  // Q7 - 房东涨租
+  {
+    narration: "大杂院房东一声不响把下月房钱涨了两成。嫌贵，就自己搬。",
+    options: [
+      { text: "一咬牙，搬！找个更便宜的地儿",      w: { drive: 1.5, grit: 2.0, calc: 0.5, kind: 0.0 } },
+      { text: "约几个街坊一块儿去理论理论",        w: { drive: 1.0, grit: 1.0, calc: 0.5, kind: 2.0 } },
+      { text: "私下请房东吃顿饭，求个通融",        w: { drive: 0.0, grit: 0.5, calc: 2.5, kind: 0.5 } },
+      { text: "认了，哪儿都一样，先续着",          w: { drive: -1.0, grit: -0.5, calc: 1.0, kind: 0.5 } },
+    ],
+  },
+  // Q8 - 工作态度：曹太太涨工钱
   {
     narration: "曹先生的太太夸你做事认真，说要给你涨工钱。你想了想——",
     options: [
@@ -218,7 +250,17 @@ export const QUESTIONS = [
       { text: "您要是不方便，就不用提了",          w: { drive: 0.0, grit: 1.0, calc: 0.0, kind: 1.5 } },
     ],
   },
-  // Q6 - 情感抉择
+  // Q9 - 父母催婚：娘抹眼泪
+  {
+    narration: "娘坐在炕沿儿上抹眼泪，说隔壁三嫂子家的闺女二胎都生了，你再不成家她没脸出门。",
+    options: [
+      { text: "「娘您别哭，过完年我一定想办法」",   w: { drive: 1.0, grit: 1.0, calc: 0.0, kind: 2.0 } },
+      { text: "「让媒婆来，相谁是谁吧」",          w: { drive: 0.0, grit: 1.0, calc: 2.0, kind: 1.0 } },
+      { text: "「成家是我自个儿的事，您少操心」",    w: { drive: 1.5, grit: 1.5, calc: 0.0, kind: -1.0 } },
+      { text: "躲出去住几天，等风头过了再回来",     w: { drive: -0.5, grit: -1.0, calc: 1.5, kind: -0.5 } },
+    ],
+  },
+  // Q10 - 情感抉择：虎妞有了
   {
     narration: "虎妞半夜找上门，说她有了孩子，非你莫属。你心里「咯噔」一下——",
     options: [
@@ -228,7 +270,27 @@ export const QUESTIONS = [
       { text: "装糊涂，「这事儿八成跟我没关系」", w: { drive: 0.0, grit: 0.0, calc: 1.5, kind: -2.0 } },
     ],
   },
-  // Q7 - 对不公的反应
+  // Q11 - 同辈攀比：发小衣锦还乡
+  {
+    narration: "发小阿三从南边回来，穿一身新做的洋呢褂子，腰里挂着块洋表。饭桌上他问你：「这几年，混得怎么样？」",
+    options: [
+      { text: "实话实说：「还没混出个样儿」",      w: { drive: 0.5, grit: 1.5, calc: 0.0, kind: 1.5 } },
+      { text: "吹一吹，说自己眼看就要发了",        w: { drive: 1.5, grit: 0.0, calc: 2.0, kind: -1.0 } },
+      { text: "「你先说，我听听」，反问回去",      w: { drive: 0.0, grit: 1.0, calc: 2.0, kind: 0.0 } },
+      { text: "举杯笑笑，不搭这茬",              w: { drive: -0.5, grit: 1.0, calc: 0.5, kind: 1.0 } },
+    ],
+  },
+  // Q12 - 身体亚健康：肺上有阴影
+  {
+    narration: "前阵子总咳嗽，你去瞧郎中。他说你肺上有点阴影，劝你好好歇一阵，别再风里来雨里去。",
+    options: [
+      { text: "活儿先搁下，乖乖歇半个月",          w: { drive: -1.0, grit: 0.0, calc: 1.5, kind: 1.5 } },
+      { text: "边歇边干，钱不能断",              w: { drive: 2.0, grit: 2.0, calc: 0.0, kind: -1.0 } },
+      { text: "换个便宜方子糊弄过去，照样跑",      w: { drive: 1.5, grit: 1.0, calc: 1.5, kind: -0.5 } },
+      { text: "不信郎中那一套，照样风雨无阻",      w: { drive: 1.0, grit: 2.0, calc: -1.0, kind: -0.5 } },
+    ],
+  },
+  // Q13 - 对不公的反应：刘四爷涨份子
   {
     narration: "刘四爷又涨了租车的份子钱，兄弟们愤愤不平，想让你去说一嘴。",
     options: [
@@ -238,7 +300,27 @@ export const QUESTIONS = [
       { text: "我跟四爷说不上话，你们自己看着办",    w: { drive: -0.5, grit: -0.5, calc: 1.0, kind: -0.5 } },
     ],
   },
-  // Q8 - 对未来的看法
+  // Q14 - 朋友拉入伙：稳赚不赔
+  {
+    narration: "多年不见的老同窗找上门，说有一桩稳赚不赔的生意，入一股三块大洋，三个月翻倍。",
+    options: [
+      { text: "三块就三块，赌一把",              w: { drive: 1.5, grit: 0.0, calc: -1.0, kind: 0.5 } },
+      { text: "先让他带我去看看摊子，再说",        w: { drive: 0.5, grit: 1.0, calc: 2.5, kind: 0.5 } },
+      { text: "「稳赚不赔？天底下没这事儿」",      w: { drive: 0.0, grit: 1.5, calc: 2.0, kind: -0.5 } },
+      { text: "不入伙，但请他吃顿饭，帮衬一下",    w: { drive: 0.0, grit: 0.5, calc: -0.5, kind: 2.0 } },
+    ],
+  },
+  // Q15 - 家人生病要钱：爹摔了
+  {
+    narration: "家里来信，爹摔了一跤躺下了。药钱治病钱加起来要二十块大洋，家里凑不出。",
+    options: [
+      { text: "把攒的全寄回去",                 w: { drive: 0.5, grit: 1.5, calc: -1.0, kind: 2.5 } },
+      { text: "寄一半，另一半让兄弟姐妹分担",      w: { drive: 0.5, grit: 1.0, calc: 2.0, kind: 1.5 } },
+      { text: "跟车厂预支几个月份子，凑一个是一个", w: { drive: 1.5, grit: 1.5, calc: 1.0, kind: 1.5 } },
+      { text: "先瞒着自个儿紧巴巴，硬挤出来",      w: { drive: 1.0, grit: 2.0, calc: -0.5, kind: 1.5 } },
+    ],
+  },
+  // Q16 - 对未来的看法：老马问图啥
   {
     narration: "老马爷子坐在茶馆里，问你：「你说，人这辈子，图个啥？」",
     options: [
@@ -248,7 +330,27 @@ export const QUESTIONS = [
       { text: "图啥？图不着啥，能活就不错了",       w: { drive: -1.5, grit: 0.5, calc: 0.0, kind: 0.5 } },
     ],
   },
-  // Q9 - 关键抉择（权重 ×1.5，在 app.js 里处理）
+  // Q17 - 新技术抢饭碗：城里要通电车
+  {
+    narration: "听说城里要通电车了。铁家伙跑得快还省力，大伙儿都说，这拉车的营生怕是要完。",
+    options: [
+      { text: "去学修电车，早换个新饭碗",          w: { drive: 2.0, grit: 1.0, calc: 2.0, kind: -0.5 } },
+      { text: "凑几个兄弟，一块儿想办法",          w: { drive: 0.5, grit: 1.0, calc: 1.0, kind: 2.0 } },
+      { text: "不信邪，拉车的活儿总有人要",        w: { drive: 1.0, grit: 2.5, calc: -1.0, kind: 0.5 } },
+      { text: "爱谁谁吧，能跑一天是一天",          w: { drive: -1.5, grit: -0.5, calc: 0.5, kind: 0.0 } },
+    ],
+  },
+  // Q18 - 深夜刷手机：通宵听书
+  {
+    narration: "夜里睡不着，隔壁茶馆说书先生开了场，你一坐就是两个时辰。再抬头看时辰，已经三更天了。",
+    options: [
+      { text: "明早照样拉车，今晚听完再说",        w: { drive: 0.0, grit: 1.5, calc: -0.5, kind: 1.0 } },
+      { text: "半路硬拉自己回去睡",              w: { drive: 1.5, grit: 1.5, calc: 1.5, kind: 0.5 } },
+      { text: "索性通宵，天一亮直接出车",          w: { drive: 2.0, grit: 2.0, calc: -1.0, kind: -0.5 } },
+      { text: "听完蒙头就睡，明儿个晚出一会儿",     w: { drive: -1.5, grit: -0.5, calc: 1.0, kind: 0.5 } },
+    ],
+  },
+  // Q19 - 关键抉择（权重 ×1.5）：买车 vs 小福子
   {
     narration: "你攒够了买车的钱，同时，小福子来求你——她爹出了事，急需一笔钱。你一旦给，买车的钱就没了。",
     options: [
@@ -258,7 +360,7 @@ export const QUESTIONS = [
       { text: "对不起，车我等了太久了",           w: { drive: 2.0, grit: 2.0, calc: 1.0, kind: -2.0 } },
     ],
   },
-  // Q10 - 关键抉择
+  // Q20 - 关键抉择：年轻人问建议
   {
     narration: "很多年以后，有个年轻人站在你面前，跟你当年一模一样——同样的愣，同样的轴。他问你要建议。",
     options: [
@@ -270,7 +372,7 @@ export const QUESTIONS = [
   },
 ];
 
-export const KEY_QUESTIONS = [8, 9]; // index 8 = Q9, index 9 = Q10 → 权重 ×1.5
+export const KEY_QUESTIONS = [18, 19]; // Q19、Q20 是压轴要紧题 → 权重 ×1.5
 
 // 分享区引导
 export const SHARE_HINTS = [

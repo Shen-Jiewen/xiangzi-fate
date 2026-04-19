@@ -132,7 +132,7 @@ function renderCover() {
       <p class="lede">${SITE.cover.lede}</p>
       <p class="tagline">${SITE.cover.tagline}</p>
       <button class="btn btn-primary" data-action="to-start">${SITE.cover.startButton}</button>
-      <p class="meta">不到五分钟 · 十个问题 · 一张剪报</p>
+      <p class="meta">七八分钟 · 二十个问题 · 一张剪报</p>
     </section>`;
 }
 
